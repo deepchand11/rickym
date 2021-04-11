@@ -18,9 +18,6 @@ const SearchBox = ({ setInfo, setCharacters, setLoading }) => {
           setLoading(false);
           setInfo(data.info);
           setCharacters([...data.results]);
-        } else {
-          setLoading(false);
-          setCharacters([]);
         }
       } catch (err) {
         setLoading(false);

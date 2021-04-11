@@ -6,9 +6,7 @@ import renderer from "react-test-renderer";
 import SearchBox from "../../components/SearchBox";
 import { fireEvent, waitFor, render } from "@testing-library/react-native";
 
-beforeEach(() => {
-  fetch.mockClear();
-});
+jest.mock("@expo/vector-icons");
 
 it("Search trigger success", async () => {
   const { getByTestId } = render(
@@ -24,7 +22,7 @@ it("Search trigger success", async () => {
 
   const button = getByTestId("searchBtnId");
   fireEvent.press(button);
-  //   await waitFor(() => expect(handleSearchPress).toHaveBeenCalledTimes(0));
+  waitFor(() => expect(handleSearchPress).toHaveBeenCalledTimes(1));
 });
 
 it("Search trigger error", async () => {
@@ -44,14 +42,16 @@ it("Search trigger error", async () => {
   fireEvent.changeText(search, searchTxt);
   const button = getByTestId("searchBtnId");
   fireEvent.press(button);
+  waitFor(() => expect(handleSearchPress).toHaveBeenCalledTimes(1));
 });
 
 it("Search trigger success with no data", async () => {
+  const loading = jest.fn();
   const { getByTestId } = render(
     <SearchBox
       setInfo={() => null}
       setCharacters={() => null}
-      setLoading={() => null}
+      setLoading={loading}
     />
   );
   const searchTxt = "Rick";
@@ -62,17 +62,16 @@ it("Search trigger success with no data", async () => {
   fireEvent.changeText(search, searchTxt);
   const button = getByTestId("searchBtnId");
   fireEvent.press(button);
+  waitFor(() => expect(handleSearchPress).toHaveBeenCalledTimes(1));
 });
 
 it("Search component renders correctly", () => {
-  const tree = renderer
-    .create(
-      <SearchBox
-        setInfo={() => null}
-        setCharacters={() => null}
-        setLoading={() => null}
-      />
-    )
-    .toJSON();
-  expect(tree).toMatchSnapshot();
+  const { toJSON } = render(
+    <SearchBox
+      setInfo={() => null}
+      setCharacters={() => null}
+      setLoading={() => null}
+    />
+  );
+  expect(toJSON()).toMatchSnapshot();
 });

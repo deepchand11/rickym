@@ -19,32 +19,26 @@ const HomeScreen = ({ navigation }) => {
     next: "https://rickandmortyapi.com/api/character/?page=1",
   });
   const [loading, setLoading] = useState(false);
-  const [isListEnd, setIsListEnd] = useState(false);
 
   let _isMounted = false;
   useEffect(() => {
     _isMounted = true;
     if (_isMounted) fetchCharacters();
     return () => {
-      // cleanup;
       _isMounted = false;
       setCharacters([]);
     };
   }, []);
   const fetchCharacters = async () => {
-    if (!loading && !isListEnd && info.next) {
+    if (!loading && info.next) {
       try {
         setLoading(true);
         const response = await fetch(info.next);
         const data = await response.json();
-
         if (data.results.length > 0) {
           setLoading(false);
           setInfo(data.info);
           setCharacters([...characters, ...data.results]);
-        } else {
-          setIsListEnd(true);
-          setLoading(false);
         }
       } catch (err) {
         console.log(err);
