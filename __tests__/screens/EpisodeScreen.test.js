@@ -1,32 +1,17 @@
 import "react-native";
 import React from "react";
 import EpisodeScreen from "../../screens/EpisodeScreen";
-import { fireEvent, waitFor, render, act } from "@testing-library/react-native";
+import { fireEvent, waitFor, render } from "@testing-library/react-native";
 
-// Note: test renderer must be required after react-native.
-// import renderer from "react-test-renderer";
-
-it("Episode Screen renders correctly", async () => {
+it("Navigate to previous screen", () => {
   const popToTop = jest.fn();
   const urlMock = {
     params: {
-      url: "EpisodeUrl",
+      url: "locationUrl",
     },
   };
-  const { toJSON } = await render(
-    <EpisodeScreen route={urlMock} navigation={{ popToTop }} />
-  );
-  expect(toJSON).toMatchSnapshot();
-});
-
-it("Navigate to previous screen", async () => {
-  const popToTop = jest.fn();
-  const urlMock = {
-    params: {
-      url: "episodeUrl",
-    },
-  };
-  const { getByTestId } = await render(
+  fetch.mockResponseSuccess(JSON.stringify({}));
+  const { getByTestId } = render(
     <EpisodeScreen route={urlMock} navigation={{ popToTop }} />
   );
   const backBtn = getByTestId("backBtn");
@@ -34,11 +19,11 @@ it("Navigate to previous screen", async () => {
   expect(popToTop).toHaveBeenCalledTimes(1);
 });
 
-it("Api mock calling on component mount ", async () => {
+it("Api success", () => {
   const popToTop = jest.fn();
   const urlMock = {
     params: {
-      url: "locationUrl",
+      url: "episodeUrl",
     },
   };
   const success = {
@@ -46,37 +31,32 @@ it("Api mock calling on component mount ", async () => {
     air_date: "Mockairdate",
     episode: "Mockepisode",
   };
-
   const fetchEpisode = fetch.mockResponseSuccess(JSON.stringify(success));
-  await act(async () => {
-    const { getByTestId } = await render(
-      <EpisodeScreen route={urlMock} navigation={{ popToTop }} />
-    );
+  const { getByTestId, toJSON } = render(
+    <EpisodeScreen route={urlMock} navigation={{ popToTop }} />
+  );
+  waitFor(() => {
     expect(getByTestId("episodeNameId").props.children).toBe("Mockname");
     expect(getByTestId("episodeAirDateId").props.children).toBe("Mockairdate");
     expect(getByTestId("episodeId").props.children).toBe("Mockepisode");
   });
-  await waitFor(() => expect(fetchEpisode).toHaveBeenCalledTimes(1));
+  waitFor(() => expect(fetchEpisode).toHaveBeenCalledTimes(1));
+  expect(toJSON()).toMatchSnapshot();
 });
 
-it("Api mock calling on component mount error", async () => {
+it("Api Error", () => {
   const popToTop = jest.fn();
   const urlMock = {
     params: {
       url: "episodeUrl",
     },
   };
-  const error = {
-    message: "Mockerror",
-  };
-  const fetchEpisode = fetch.mockResponseFailure(error);
-  await act(async () => {
-    const { getByTestId } = await render(
-      <EpisodeScreen route={urlMock} navigation={{ popToTop }} />
-    );
-    expect(getByTestId("episodeNameId").props.children).toBeUndefined();
-    expect(getByTestId("episodeAirDateId").props.children).toBeUndefined();
-    expect(getByTestId("episodeId").props.children).toBeUndefined();
+  const fetchEpisode = fetch.mockResponseFailure({
+    error: { message: "mockerror" },
   });
-  await waitFor(() => expect(fetchEpisode).toHaveBeenCalledTimes(1));
+  const { toJSON } = render(
+    <EpisodeScreen route={urlMock} navigation={{ popToTop }} />
+  );
+  waitFor(() => expect(fetchEpisode).toHaveBeenCalledTimes(0));
+  expect(toJSON()).toMatchSnapshot();
 });

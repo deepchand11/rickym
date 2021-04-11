@@ -56,28 +56,7 @@ exports[`Search component renders correctly 1`] = `
             "width": 40,
           }
         }
-      >
-        <Text
-          allowFontScaling={false}
-          style={
-            Array [
-              Object {
-                "color": "white",
-                "fontSize": 24,
-              },
-              undefined,
-              Object {
-                "fontFamily": "anticon",
-                "fontStyle": "normal",
-                "fontWeight": "normal",
-              },
-              Object {},
-            ]
-          }
-        >
-          
-        </Text>
-      </View>
+      />
     </View>
   </RNGestureHandlerButton>
 </View>

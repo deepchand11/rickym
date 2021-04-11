@@ -18,7 +18,7 @@ const DetailScreen = ({ route, navigation }) => {
         setLoading(true);
         const response = await fetch(url);
         const data = await response.json();
-        if (data) {
+        if (!data.error && Object.keys(data).length > 0) {
           setLoading(false);
           setDetail(data);
         }

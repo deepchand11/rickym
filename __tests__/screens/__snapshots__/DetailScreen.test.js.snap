@@ -1,6 +1,123 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Detail Screen renders correctly 1`] = `
+exports[`Api Error 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#E4E4E4",
+      "flex": 1,
+      "padding": 20,
+    }
+  }
+>
+  <View>
+    <Text
+      style={
+        Object {
+          "color": "rgb(158, 158, 158)",
+          "fontSize": 14,
+          "fontWeight": "bold",
+        }
+      }
+    >
+      Name:
+    </Text>
+    <Text
+      style={
+        Object {
+          "fontSize": 16,
+          "marginBottom": 10,
+        }
+      }
+      testID="detailNameId"
+    />
+    <Text
+      style={
+        Object {
+          "color": "rgb(158, 158, 158)",
+          "fontSize": 14,
+          "fontWeight": "bold",
+        }
+      }
+    >
+      Type:
+    </Text>
+    <Text
+      style={
+        Object {
+          "fontSize": 16,
+          "marginBottom": 10,
+        }
+      }
+      testID="detailTypeId"
+    />
+    <Text
+      style={
+        Object {
+          "color": "rgb(158, 158, 158)",
+          "fontSize": 14,
+          "fontWeight": "bold",
+        }
+      }
+    >
+      Dimension:
+    </Text>
+    <Text
+      style={
+        Object {
+          "fontSize": 16,
+          "marginBottom": 10,
+        }
+      }
+      testID="detailDimensionId"
+    />
+  </View>
+  <View
+    accessibilityRole="button"
+    accessibilityState={Object {}}
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "opacity": 1,
+      }
+    }
+    testID="backBtn"
+  >
+    <View
+      style={
+        Array [
+          Object {},
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#007AFF",
+              "fontSize": 18,
+              "margin": 8,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Go back
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Api success 1`] = `
 <View
   style={
     Object {
