@@ -1,21 +1,46 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { StyleSheet, View } from "react-native";
+import HomeScreen from "./screens/HomeScreen";
+import EpisodeScreen from "./screens/EpisodeScreen";
+import DetailScreen from "./screens/DetailScreen";
+
+const { Navigator, Screen } = createStackNavigator();
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <NavigationContainer>
+        <Navigator initialRouteName="Home">
+          <Screen
+            name="Home"
+            component={HomeScreen}
+            options={{
+              title: "Rick And Morty",
+              headerTitleAlign: "center",
+              headerTitleStyle: {
+                fontWeight: "bold",
+              },
+            }}
+          />
+          <Screen
+            name="Details"
+            options={{ title: "Details" }}
+            component={DetailScreen}
+          />
+          <Screen
+            name="Episode"
+            options={{ title: "Episode" }}
+            component={EpisodeScreen}
+          />
+        </Navigator>
+      </NavigationContainer>
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });

@@ -1,0 +1,176 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "rgb(60, 62, 68)",
+      "borderRadius": 20,
+      "flex": 1,
+      "flexDirection": "row",
+      "marginHorizontal": 16,
+      "marginVertical": 8,
+    }
+  }
+>
+  <Image
+    source={
+      Object {
+        "uri": "imageUrl",
+      }
+    }
+    style={
+      Object {
+        "borderBottomLeftRadius": 20,
+        "borderTopLeftRadius": 20,
+        "height": 115,
+        "width": 115,
+      }
+    }
+  />
+  <View
+    style={
+      Object {
+        "padding": 5,
+        "paddingLeft": 10,
+      }
+    }
+  >
+    <Text
+      numberOfLines={1}
+      style={
+        Object {
+          "color": "#ffffff",
+          "fontSize": 20,
+          "fontWeight": "bold",
+          "width": 180,
+        }
+      }
+    />
+    <View
+      style={
+        Object {
+          "flexDirection": "row",
+        }
+      }
+    >
+      <Text
+        allowFontScaling={false}
+        style={
+          Array [
+            Object {
+              "color": "#E4E4E4",
+              "fontSize": 14,
+            },
+            undefined,
+            Object {
+              "fontFamily": "octicons",
+              "fontStyle": "normal",
+              "fontWeight": "normal",
+            },
+            Object {},
+          ]
+        }
+      >
+        
+      </Text>
+      <Text
+        numberOfLines={1}
+        style={
+          Object {
+            "color": "rgb(158, 158, 158)",
+            "fontSize": 11,
+            "marginLeft": 3,
+          }
+        }
+      >
+         - 
+      </Text>
+    </View>
+    <Text
+      style={
+        Object {
+          "color": "rgb(158, 158, 158)",
+          "fontSize": 11,
+        }
+      }
+    >
+      Last known location:
+    </Text>
+    <RNGestureHandlerButton
+      collapsable={false}
+      onGestureEvent={[Function]}
+      onGestureHandlerEvent={[Function]}
+      onGestureHandlerStateChange={[Function]}
+      onHandlerStateChange={[Function]}
+      rippleColor={0}
+      testID="locationId"
+    >
+      <View
+        accessible={true}
+        style={
+          Object {
+            "opacity": 1,
+          }
+        }
+      >
+        <Text
+          numberOfLines={1}
+          style={
+            Object {
+              "color": "#ffffff",
+              "fontSize": 12,
+              "textDecorationLine": "underline",
+              "width": 180,
+            }
+          }
+        >
+          locationName
+        </Text>
+      </View>
+    </RNGestureHandlerButton>
+    <Text
+      style={
+        Object {
+          "color": "rgb(158, 158, 158)",
+          "fontSize": 11,
+        }
+      }
+    >
+      First seen in:
+    </Text>
+    <RNGestureHandlerButton
+      collapsable={false}
+      onGestureEvent={[Function]}
+      onGestureHandlerEvent={[Function]}
+      onGestureHandlerStateChange={[Function]}
+      onHandlerStateChange={[Function]}
+      rippleColor={0}
+      testID="episodeId"
+    >
+      <View
+        accessible={true}
+        style={
+          Object {
+            "opacity": 1,
+          }
+        }
+      >
+        <Text
+          numberOfLines={1}
+          style={
+            Object {
+              "color": "#ffffff",
+              "fontSize": 12,
+              "textDecorationLine": "underline",
+              "width": 180,
+            }
+          }
+        >
+          episode
+        </Text>
+      </View>
+    </RNGestureHandlerButton>
+  </View>
+</View>
+`;

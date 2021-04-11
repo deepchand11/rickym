@@ -4,14 +4,21 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "web": "expo start --web",
+    "start:expo": "expo start",
     "start": "react-native start",
-    "test": "jest"
+    "test:final": "jest",
+    "test": "jest --watch --coverage=false --changedSince=origin/master",
+    "test:debug": "jest -o --watch --coverage=false",
+    "update:snapshots": "jest -u --coverage=false"
   },
   "dependencies": {
+    "@react-navigation/native": "^5.9.4",
+    "@react-navigation/stack": "^5.14.4",
     "expo": "~40.0.0",
     "expo-splash-screen": "~0.8.0",
     "expo-status-bar": "~1.0.3",
     "expo-updates": "~0.4.0",
+    "jest-fetch-mock": "^3.0.3",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "~0.63.4",
@@ -23,12 +30,31 @@
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
+    "@testing-library/jest-native": "^4.0.1",
+    "@testing-library/react-native": "^7.2.0",
+    "@types/jest": "^26.0.22",
     "babel-jest": "~25.2.6",
     "jest": "~25.2.6",
+    "jest-expo": "^40.0.2",
     "react-test-renderer": "~16.13.1"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "jest-expo",
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|@sentry/.*)"
+    ],
+    "setupFiles": [
+      "./config/jest/jestSetup.js",
+      "./config/jest/globalFetch.js"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/coverage/**",
+      "!**/node_modules/**",
+      "!**/babel.config.js",
+      "!**/jest.setup.js"
+    ]
   },
   "private": true
 }
