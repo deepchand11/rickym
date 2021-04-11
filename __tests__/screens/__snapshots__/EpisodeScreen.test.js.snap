@@ -116,3 +116,5 @@ exports[`Detail Screen renders correctly 1`] = `
   </View>
 </View>
 `;
+
+exports[`Episode Screen renders correctly 1`] = `[Function]`;

@@ -28,10 +28,11 @@ it("Detail Screen renders correctly", async () => {
       url: "locationUrl",
     },
   };
-  const tree = await renderer
-    .create(<DetailScreen route={urlMock} navigation={{ popToTop }} />)
-    .toJSON();
-  expect(tree).toMatchSnapshot();
+  const { toJSON } = await render(
+    <DetailScreen route={urlMock} navigation={{ popToTop }} />
+  );
+
+  expect(toJSON()).toMatchSnapshot();
 });
 
 it("Navigate to previous screen", async () => {
